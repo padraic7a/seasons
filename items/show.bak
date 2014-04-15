@@ -5,13 +5,7 @@
 <div id="primary">
 
     <?php if ((get_theme_option('Item FileGallery') == 0) && metadata('item', 'has files')): ?>
-    <?php  echo set_loop_records('files', $item->Files);
-	foreach (loop('files') as $file):
-	 if ($file->getExtension() !='pdf'):
-           echo file_markup($file, array('fileSize' => 'fullsize'));
-         endif;
-	endforeach; ?>
-
+    <?php echo files_for_item(array('imageSize' => 'fullsize')); ?>
     <?php endif; ?>
     
     <?php echo all_element_texts('item'); ?>
