@@ -8,7 +8,8 @@
     <?php  echo set_loop_records('files', $item->Files);
 	foreach (loop('files') as $file):
 	 if ($file->getExtension() !='pdf'):
-           echo file_markup($file, array('fileSize' => 'fullsize'));
+           echo file_markup($file, array('imageSize' => 
+           'fullsize'));
          endif;
 	endforeach; ?>
 
