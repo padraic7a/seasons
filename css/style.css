@@ -562,6 +562,7 @@
   }
   #content > div > div:only-of-type, #content > div > div:last-of-type, #content section > div:only-of-type, #content section > div:last-of-type {
     margin-bottom: 0;
+
   }
   #content > div > div div, #content > div > div h3, #content > div > div h4, #content > div > div h5, #content > div > div h6, #content > div > div p, #content section > div div, #content section > div h3, #content section > div h4, #content section > div h5, #content section > div h6, #content section > div p {
     -webkit-box-shadow: transparent 0 0 0;

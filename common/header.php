@@ -26,6 +26,7 @@
     queue_css_file('normalize');
     queue_css_file('style');
     queue_css_file('nltime-local');
+    queue_css_file('timeline-band-1');
     echo head_css();
     ?>
 
