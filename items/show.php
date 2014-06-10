@@ -16,7 +16,7 @@
 
       <?php echo all_element_texts('item'); ?>
 
-  <!-- disply pdfs in pdf.js, which should be installed in /var/www/ (lines 23 - 24), if the file is not a pdf it can be displayed in plugins as normal (lines 26 -28) -->
+  <!-- disply pdfs in pdf.js, which should be installed in /var/www/html/ (lines 23 - 24), if the file is not a pdf it can be displayed in plugins as normal (lines 26 -28) -->
   <?php if (!$item) $item = get_current_record('item');
     $files = $item->Files;
    foreach($files as $file)
