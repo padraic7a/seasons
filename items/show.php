@@ -4,24 +4,32 @@
 
 <div id="primary">
 
-    <?php if ((get_theme_option('Item FileGallery') == 0) && metadata('item', 'has files')): ?>
-    <?php  echo set_loop_records('files', $item->Files);
-	foreach (loop('files') as $file):
-	 if ($file->getExtension() !='pdf'):
-           echo file_markup($file, array('imageSize' => 
-           'fullsize'));
-         endif;
-	endforeach; ?>
+  <!-- prevent pdf files from showing both in the item view and in the plugins /viewers (lines 8 - 11), fix to prevent images being thumbnailed as a knock-on (line 12)  -->
+  <?php if ((get_theme_option('Item FileGallery') == 0) && metadata('item', 'has files')): ?>
+      <?php  echo set_loop_records('files', $item->Files);
+          foreach (loop('files') as $file):
+           if ($file->getExtension() !='pdf'):
+             echo file_markup($file, array('imageSize' => 'fullsize'));
+           endif;
+          endforeach; ?>
+      <?php endif; ?>
 
-    <?php endif; ?>
-    
-    <?php echo all_element_texts('item'); ?>
-    
-    <?php fire_plugin_hook('public_items_show', array('view' => $this, 'item' => $item)); ?>
+      <?php echo all_element_texts('item'); ?>
+
+  <!-- disply pdfs in pdf.js, which should be installed in /var/www/ (lines 23 - 24), if the file is not a pdf it can be displayed in plugins as normal (lines 26 -28) -->
+  <?php if (!$item) $item = get_current_record('item');
+    $files = $item->Files;
+   foreach($files as $file)
+    if ($file->getExtension() =='pdf'){
+     echo '<iframe width=100% height=800 src="http://xdeevy.nuim.ie/pdf.js/web/viewer.html?file=http://xdeevy.nuim.ie/files/original/'.metadata($file,'filename').'"></iframe>';
+   }
+    if($file->getExtension() !='pdf'){
+    fire_plugin_hook('public_items_show', array('view' => $this, 'item' => $item));
+    }
+  ?>
 
 
-
-</div><!-- end primary -->
+  </div><!-- end primary -->
 
 <aside id="sidebar">
 
