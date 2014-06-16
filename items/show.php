@@ -22,6 +22,7 @@
    foreach($files as $file)
     if ($file->getExtension() =='pdf'){
      echo '<iframe width=100% height=800 src="http://deevy.nuim.ie/pdf.js/web/viewer.html?file=http://deevy.nuim.ie/files/original/'.metadata($file,'filename').'"></iframe>';
+   return;	
    }
     if($file->getExtension() !='pdf'){
     fire_plugin_hook('public_items_show', array('view' => $this, 'item' => $item));
