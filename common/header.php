@@ -22,11 +22,9 @@
 
     <!-- Stylesheets -->
     <?php
-    queue_css_url('http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic');
-    queue_css_file('normalize');
-    queue_css_file('style');
-    queue_css_file('nltime-local');
-    queue_css_file('timeline-band-1');
+    queue_css_url('//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic');
+    queue_css_file(array('iconfonts', 'normalize', 'style'), 'screen');
+    queue_css_file('print', 'print');
     echo head_css();
     ?>
 
@@ -37,19 +35,6 @@
     <?php queue_js_file('vendor/respond'); ?>
     <?php queue_js_file('globals'); ?>
     <?php echo head_js(); ?>
-
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-50822888-1', 'nuim.ie');
-  ga('send', 'pageview');
-
-</script>
 </head>
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
     <?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
@@ -59,7 +44,11 @@
                 <?php echo link_to_home_page(theme_logo()); ?>
             </div>
             <div id="search-container">
+                <?php if (get_theme_option('use_advanced_search') === null || get_theme_option('use_advanced_search')): ?>
                 <?php echo search_form(array('show_advanced' => true)); ?>
+                <?php else: ?>
+                <?Php echo search_form(); ?>
+                <?php endif; ?>
             </div>
             <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
         </header>
@@ -69,3 +58,8 @@
         </nav>
 
         <div id="content">
+            <?php
+                if(! is_current_url(WEB_ROOT)) {
+                  fire_plugin_hook('public_content_top', array('view'=>$this));
+                }
+            ?>

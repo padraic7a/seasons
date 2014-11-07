@@ -10,12 +10,11 @@
                 <p><?php echo $copyright; ?></p>
             <?php endif; ?>
         </div>
- 
-        <p><?php echo __('Teresa Deevy Archive, <a href="http://www.nuim.ie">NUI Maynooth</a>. Phone +353 (1) 474 7197 <a href="mailto:padraic.stack@nuim.ie">Email</a>. '); ?></p>
-        
-    <?php fire_plugin_hook('public_footer'); ?>
 
-    <a href="http://library.nuim.ie"><img src="/files/theme_uploads/scale_library.jpg" /></a> <a href="http://forasfeasa.ie"><img src="/files/theme_uploads/scale_aff.png" /></a> <a href="http://3upartnership.ie"> <img src="/files/theme_uploads/3U_partnership.png" /></a>
+        <p><?php echo __('Proudly powered by <a href="http://omeka.org">Omeka</a>.'); ?></p>
+
+    <?php fire_plugin_hook('public_footer', array('view' => $this)); ?>
+
 </footer>
 
 </div><!--end wrap-->
@@ -26,8 +25,6 @@ jQuery(document).ready(function () {
     Seasons.mobileSelectNav();
 });
 </script>
-
-
 
 </body>
 
