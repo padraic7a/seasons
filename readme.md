@@ -12,3 +12,5 @@ We have changed code in items/show.php to display pdfs vis pdf.js (installed in 
 We have changed the default Timeline height to 350px on line 7 of /var/www/html/plugins/NeatlineTime/views/shared/css/neatlinetime-timeline.css
 
 Removed 'Dublin Core' heading on item pages as specified here: http://omeka.org/forums/topic/remove-dublin-core-from-publi-pages
+
+Just testing the pull request on your project, i am student by the way and i am learning to use git & github !
